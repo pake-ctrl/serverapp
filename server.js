@@ -5,7 +5,7 @@ const { OAuth2Client } = require('google-auth-library');
 const admin = require('firebase-admin');
 const serviceAccount = require('./firebase-service-account.json'); // Update the path if necessary
 const cors = require('cors');
-
+const fs = require ('fs');
 const app = express();
 const port = process.env.PORT || 5000; // Choose a port different from your MySQL port
 
@@ -15,7 +15,9 @@ const db = mysql.createConnection({
     host: 'inferno-bd.mysql.database.azure.com', // or the IP address of your server
     user: 'inferno', // Your MySQL username
     password: 'Danilkoko!1', // Your MySQL password
-    database: 'inferno' // The name of your database
+    database: 'inferno',
+    ssl: true
+    // ssl:{ca:fs.readFileSync("{ca-cert filename}")}
 });
 
 db.connect(err => {
