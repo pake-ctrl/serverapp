@@ -7,14 +7,14 @@ const serviceAccount = require('./firebase-service-account.json'); // Update the
 const cors = require('cors');
 
 const app = express();
-const port = 3000; // Choose a port different from your MySQL port
+const port = process.env.PORT || 5000; // Choose a port different from your MySQL port
 
 const client = new OAuth2Client('274956882933-mlfraac6hed4vsn4pitt3vpndkd80k5p.apps.googleusercontent.com'); // Replace with your Google OAuth client ID
 
 const db = mysql.createConnection({
-    host: 'localhost', // or the IP address of your server
-    user: 'root', // Your MySQL username
-    password: '123', // Your MySQL password
+    host: 'inferno-bd.mysql.database.azure.com', // or the IP address of your server
+    user: 'inferno', // Your MySQL username
+    password: 'Danilkoko!1', // Your MySQL password
     database: 'inferno' // The name of your database
 });
 
