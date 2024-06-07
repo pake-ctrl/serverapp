@@ -11,13 +11,15 @@ const port = process.env.PORT || 5000; // Choose a port different from your MySQ
 
 const client = new OAuth2Client('274956882933-mlfraac6hed4vsn4pitt3vpndkd80k5p.apps.googleusercontent.com'); // Replace with your Google OAuth client ID
 
+let cert = fs.readFileSync("DigiCertGlobalRootCA.crt.pem");
+
 const db = mysql.createConnection({
     host: 'inferno-bd.mysql.database.azure.com', // or the IP address of your server
     user: 'inferno', // Your MySQL username
     password: 'Danilkoko!1', // Your MySQL password
     database: 'inferno',
-    ssl: true
-    // ssl:{ca:fs.readFileSync("{ca-cert filename}")}
+    trustServerCertificate: true,
+    ssl:{ca: cert}
 });
 
 db.connect(err => {
