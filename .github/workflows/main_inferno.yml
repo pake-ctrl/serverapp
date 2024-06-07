@@ -51,6 +51,8 @@ jobs:
 
       - name: Unzip artifact for deployment
         run: unzip release.zip
+      - name: Decode Firebase Service Account
+        run: echo "${{ secrets.FIREBASE_SERVICE_ACCOUNT_JSON }}" | base64 --decode > ${{ github.workspace }}/firebase-service-account.json
       
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
